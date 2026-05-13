@@ -1,0 +1,630 @@
+:root[data-theme='dark'] {
+    --bg-primary: #0b0d11;
+    --bg-secondary: rgba(26, 29, 35, 0.8);
+    --text-main: #ffffff !important;
+    --text-dim: #9ca3af;
+    --accent: #818cf8;
+    --logo-color: #32ff7e;
+    --card-bg: #161a22;
+    --border: #262a33;
+    --status-online: #10b981;
+    --status-game: #3b82f6;
+    --play-btn: #00b06f;
+    --play-shadow: rgba(0, 176, 111, 0.4);
+}
+
+:root[data-theme='light'] {
+    --bg-primary: #f3f4f6;
+    --bg-secondary: rgba(255, 255, 255, 0.8);
+    --text-main: #111827 !important;
+    --text-dim: #6b7280;
+    --accent: #4f46e5;
+    --logo-color: #4f46e5;
+    --card-bg: #ffffff;
+    --border: #e5e7eb;
+    --status-online: #059669;
+    --status-game: #2563eb;
+    --play-btn: #00814f;
+    --play-shadow: rgba(0, 129, 79, 0.2);
+}
+
+body {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-main) !important;
+    font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.navbar {
+    background: var(--bg-secondary) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+.navbar-logo {
+    color: var(--logo-color) !important;
+    font-weight: 900 !important;
+    font-size: 1.5rem !important;
+    letter-spacing: -0.5px;
+    text-decoration: none !important;
+    transition: opacity 0.2s ease;
+}
+
+.navbar-logo:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .game-detail-header {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .btn-play {
+        text-align: center !important;
+        width: 100% !important;
+        padding: 14px 0 !important;
+    }
+}
+
+.btn-discord {
+    background-color: #5865F2 !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+}
+
+.section-sep {
+    margin: 1rem 0 !important;
+    border: 0;
+    border-top: 1px solid var(--border) !important;
+}
+
+.carousel-arrow {
+    background: var(--arrow-bg) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 50% !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.2s !important;
+}
+
+.carousel-arrow:hover {
+    background: var(--accent) !important;
+    color: white !important;
+}
+
+.friends-row {
+    padding: 10px 5px !important;
+    gap: 12px !important;
+}
+
+.friend-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    transition: transform 0.2s ease !important;
+}
+
+.friend-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: var(--accent) !important;
+}
+
+.friend-name {
+    color: var(--text-main) !important;
+}
+
+.games-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)) !important;
+    gap: 12px !important;
+}
+
+.game-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    transition: all 0.2s ease !important;
+}
+
+.game-card:hover {
+    transform: scale(1.03) !important;
+    border-color: var(--accent) !important;
+}
+
+.game-card-thumb {
+    aspect-ratio: 1 / 1 !important;
+    overflow: hidden !important;
+}
+
+.game-card-thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.game-card-body {
+    padding: 8px !important;
+}
+
+.game-card-title {
+    font-size: 0.95rem !important;
+    color: var(--text-main) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.game-card-meta {
+    font-size: 0.8rem !important;
+    color: var(--text-dim) !important;
+}
+
+.user-row {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    margin-bottom: 8px !important;
+    transition: transform 0.2s ease !important;
+}
+
+.user-row:hover {
+    transform: translateX(5px) !important;
+    border-color: var(--accent) !important;
+}
+
+.user-row-name {
+    color: var(--text-main) !important;
+}
+
+.btn-signout-sm {
+    background: var(--card-bg) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border) !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.game-banner {
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    background: var(--card-bg) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--border) !important;
+    margin-bottom: 24px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.game-banner img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.game-detail-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+    margin-bottom: 30px !important;
+}
+
+.game-detail-title {
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    color: var(--text-main) !important;
+    margin-bottom: 4px !important;
+}
+
+.game-detail-creator {
+    font-size: 1.1rem !important;
+    color: var(--text-dim) !important;
+    margin-bottom: 20px !important;
+}
+
+.game-detail-stats {
+    display: flex !important;
+    gap: 32px !important;
+}
+
+.game-stat {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.game-stat-value {
+    font-weight: 800 !important;
+    font-size: 1.3rem !important;
+    color: var(--text-main) !important;
+}
+
+.game-stat-label {
+    font-size: 0.75rem !important;
+    color: var(--text-dim) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.btn-play {
+    background: var(--play-btn) !important;
+    color: #ffffff !important;
+    padding: 14px 60px !important;
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 6px 15px var(--play-shadow) !important;
+}
+
+.btn-play:hover {
+    transform: scale(1.05) !important;
+    filter: brightness(1.1);
+}
+
+.game-description-box {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+}
+
+.game-description-label {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 12px !important;
+    color: var(--text-main) !important;
+}
+
+.game-description-text {
+    color: var(--text-dim) !important;
+    line-height: 1.7 !important;
+    font-size: 1rem !important;
+}
+
+.skeleton {
+    background: var(--border) !important;
+    opacity: 0.6;
+}
+
+#overlay {
+    display: none;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 30px !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(8px);
+    cursor: default !important;
+    z-index: 10000 !important;
+}
+
+#overlay[style*="display: block"] {
+    display: flex !important;
+}
+
+#overlay span {
+    pointer-events: none !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 2.5rem !important;
+    color: white !important;
+}
+
+#leave-game-btn {
+    all: unset !important;
+    background: #ff4757 !important;
+    color: white !important;
+    border: 2px solid white !important;
+    padding: 12px 40px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.1rem !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    text-transform: uppercase !important;
+    transition: all 0.2s ease !important;
+    z-index: 9999 !important;
+}
+
+#leave-game-btn:hover {
+    background: #ff6b81 !important;
+    transform: scale(1.05) !important;
+}
+
+#leaderboard {
+    top: 20px !important;
+    right: 20px !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 10px !important;
+    min-width: 200px !important;
+}
+
+.lb-title {
+    font-weight: 800 !important;
+    font-size: 0.9rem !important;
+    color: #32ff7e !important;
+    text-transform: uppercase;
+}
+
+#chat-window {
+    margin-top: 70px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    pointer-events: auto !important;
+}
+
+#chat-input-row {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 6px !important;
+    border: none !important;
+}
+
+#chat-input {
+    color: white !important;
+}
+
+#hud-topbar {
+    position: absolute !important;
+    top: 20px !important;
+    left: 20px !important;
+    display: flex !important;
+    gap: 10px !important;
+    z-index: 10001 !important;
+}
+
+.hud-btn {
+    pointer-events: auto !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    width: 40px !important;
+    height: 40px !important;
+    cursor: pointer !important;
+}
+
+.hud-btn:hover {
+    background: var(--accent) !important;
+    border-color: white !important;
+}
+
+#settings-panel {
+    background: rgba(15, 15, 15, 0.95) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 16px !important;
+    padding: 25px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.sp-title {
+    font-weight: 800 !important;
+    color: var(--logo-color) !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 20px !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#chat-input {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    cursor: text !important;
+    overflow-wrap: break-word !important;
+    white-space: pre-wrap !important;
+}
+
+#chat-input::selection {
+    background: var(--accent);
+    color: white;
+}
+
+#patience-note {
+    font-family: 'Inter', sans-serif !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+.chat-placeholder {
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+body:not(:focus-within) {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.profile-header {
+    background: var(--bg-secondary) !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px !important;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.profile-avatar {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    border: 3px solid var(--accent) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-username {
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    color: var(--text-main) !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 15px;
+    margin: 12px 0 !important;
+}
+
+.profile-stat {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem !important;
+    color: var(--text-dim) !important;
+    text-decoration: none !important;
+    transition: background 0.2s;
+}
+
+.profile-stat:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main) !important;
+}
+
+.bio-box {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-top: 20px !important;
+}
+
+.bio-text {
+    color: var(--text-dim) !important;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.bio-textarea {
+    background: rgba(0, 0, 0, 0.2) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    min-height: 100px;
+}
+
+.profile-info-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.profile-info-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.join-date-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+.join-date-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.btn-primary,
+.btn-secondary {
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    padding: 8px 16px !important;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--accent) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-secondary {
+    background: transparent !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border) !important;
+}
+
+.btn-secondary:hover {
+    background: var(--border) !important;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent) !important;
+    border: 1px solid var(--accent);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-stat strong {
+    color: var(--text-main) !important;
+    font-weight: 800;
+}
+
+#profile-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.profile-stat:hover strong {
+    color: var(--accent) !important;
+}

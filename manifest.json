@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Vortex Re-UI",
+    "version": "1.0.0",
+    "description": "Vortex, now revamped!",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://vortex.towerstats.com/*"
+            ],
+            "css": [
+                "style.css"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "storage"
+    ]
+}
