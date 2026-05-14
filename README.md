@@ -1,4 +1,4 @@
-<img width="716" height="370" alt="image" src="https://github.com/user-attachments/assets/f73885a2-0814-4fd9-8d9c-86ff25e8aff6" /># Vortex-Re-UI
+# Vortex-Re-UI
 **Vortex with a better, revamped UI.**
 My vision is to make an extension for Vortex, where it has *NO* bloat (i mean it), but does all of ur essential things and improves the website.
 
