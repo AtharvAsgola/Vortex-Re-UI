@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vortex Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 250px;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            color: white;
+            border-radius: 12px;
+        }
+        h2 {
+            margin: 0 0 20px 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(to right, #10b981, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .btn.active {
+            background: #6366f1;
+            border-color: #818cf8;
+        }
+        .color-picker-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #a1a1aa;
+        }
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            background: transparent;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        input[type="color"]::-webkit-color-swatch {
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Vortex Re-UI</h2>
+    
+    <button class="btn" id="btn-dark">Dark Mode</button>
+    <button class="btn" id="btn-light">Light Mode</button>
+    
+    <div class="color-picker-wrap">
+        <span>Custom Accent</span>
+        <input type="color" id="custom-color">
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
