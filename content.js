@@ -53,47 +53,56 @@ const applyTheme = (theme, customHex = null) => {
     }
 };
 
-// Initialize theme on page load immediately to prevent flashing
-const savedTheme = localStorage.getItem('vortex-theme') || 'dark';
-const savedCustomColor = localStorage.getItem('vortex-custom-color') || '#6366f1';
-applyTheme(savedTheme, savedCustomColor);
+const defaultSettings = {
+    theme: 'dark',
+    customHex: '#6366f1',
+    showFriends: true,
+    gridSize: 140,
+    textSize: 16,
+    hoverAnim: true,
+    clickAnim: true
+};
 
-// Listen for messages from the popup!
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === 'setTheme') {
-        localStorage.setItem('vortex-theme', request.theme);
-        applyTheme(request.theme, localStorage.getItem('vortex-custom-color') || '#6366f1');
-        sendResponse({ success: true });
-    } else if (request.action === 'setCustomColor') {
-        localStorage.setItem('vortex-theme', 'custom');
-        localStorage.setItem('vortex-custom-color', request.hex);
-        applyTheme('custom', request.hex);
-        sendResponse({ success: true });
-    } else if (request.action === 'getThemeStatus') {
-        sendResponse({
-            theme: localStorage.getItem('vortex-theme') || 'dark',
-            customHex: localStorage.getItem('vortex-custom-color') || '#6366f1'
-        });
+let currentSettings = { ...defaultSettings };
+
+const applySettings = (settings) => {
+    currentSettings = { ...settings };
+    applyTheme(settings.theme, settings.customHex);
+    document.documentElement.style.setProperty('--grid-size', `${settings.gridSize}px`);
+    document.documentElement.style.fontSize = `${settings.textSize}px`;
+    document.body.classList.toggle('no-hover-anim', !settings.hoverAnim);
+    document.body.classList.toggle('no-click-anim', !settings.clickAnim);
+    document.body.classList.toggle('hide-friends', !settings.showFriends);
+};
+
+chrome.storage.local.get(defaultSettings, (settings) => {
+    applySettings(settings);
+});
+
+chrome.storage.onChanged.addListener((changes, namespace) => {
+    if (namespace === 'local') {
+        const newSettings = { ...currentSettings };
+        for (let [key, { newValue }] of Object.entries(changes)) {
+            newSettings[key] = newValue;
+        }
+        applySettings(newSettings);
     }
 });
 
 const injectThemeToggle = () => {
     let navbar = document.querySelector('.navbar-actions');
-    // Only inject the toggle button if the navbar exists (e.g. not on login page)
     if (!navbar || document.getElementById('theme-toggle')) return;
 
     const toggleBtn = document.createElement('button');
     toggleBtn.id = 'theme-toggle';
     toggleBtn.className = 'btn-signout-sm';
 
-    // Set initial icon based on current theme
     const currentTheme = document.documentElement.getAttribute('data-theme');
     toggleBtn.innerHTML = `<i class="fas fa-${currentTheme === 'custom' ? 'palette' : (currentTheme === 'light' ? 'sun' : 'moon')}"></i>`;
     toggleBtn.style.position = 'relative';
 
     navbar.prepend(toggleBtn);
 
-    // Simple click to toggle between dark and light
     toggleBtn.addEventListener('click', e => {
         let newTheme;
         const theme = document.documentElement.getAttribute('data-theme');
@@ -102,8 +111,7 @@ const injectThemeToggle = () => {
         } else {
             newTheme = theme === 'dark' ? 'light' : 'dark';
         }
-        localStorage.setItem('vortex-theme', newTheme);
-        applyTheme(newTheme, localStorage.getItem('vortex-custom-color') || '#6366f1');
+        chrome.storage.local.set({ theme: newTheme });
     });
 };
 

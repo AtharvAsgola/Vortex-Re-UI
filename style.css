@@ -162,7 +162,7 @@ body {
 
 .games-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fill, minmax(var(--grid-size, 140px), 1fr)) !important;
     gap: 20px !important;
 }
 
@@ -1210,4 +1210,46 @@ a[href*="/home"]:hover,
     font-size: 1.5rem !important;
     font-weight: 800 !important;
     color: var(--text-main) !important;
+}
+
+/* Settings Overrides */
+
+/* Friends Carousel */
+body.hide-friends .friends-row,
+body.hide-friends .carousel-arrow,
+body.hide-friends h2:has(+ .friends-row),
+body.hide-friends h3:has(+ .friends-row) {
+    display: none !important;
+}
+
+/* Animations */
+body.no-hover-anim .navbar-logo:hover,
+body.no-hover-anim .friend-card:hover,
+body.no-hover-anim .game-card:hover .game-card-thumb img,
+body.no-hover-anim .hud-btn:hover {
+    transform: scale(1) !important;
+}
+
+body.no-hover-anim .btn-discord:hover,
+body.no-hover-anim .profile-stat:hover {
+    transform: translateY(0) !important;
+}
+
+body.no-hover-anim .carousel-arrow:hover {
+    transform: translateY(-50%) scale(1) !important;
+}
+
+body.no-hover-anim .game-card:hover,
+body.no-hover-anim .btn-play:hover,
+body.no-hover-anim #leave-game-btn:hover {
+    transform: translateY(0) scale(1) !important;
+}
+
+body.no-hover-anim .user-row:hover,
+body.no-hover-anim #leaderboard:hover {
+    transform: translateX(0) !important;
+}
+
+body.no-click-anim .btn-play:active {
+    transform: translateY(0) scale(1) !important;
 }

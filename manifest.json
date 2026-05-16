@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "Vortex Re-UI",
-    "version": "1.1.0",
-    "description": "Vortex, now revamped!",
+    "version": "1.2.0",
+    "description": "Vortex, reworked!",
     "action": {
         "default_popup": "popup.html",
         "default_icon": "icon.png"
