@@ -1,6 +1,6 @@
 # Vortex-Re-UI
 **Vortex with a better, revamped UI.**
-My vision is to make an extension for Vortex, where it has *NO* bloat (i mean it), but does all of ur essential things and improves the website.
+My vision is to make an extension for Vortex, where it has *NO* bloat (i mean it) and lightweight (<500KB), but does all of ur essential things and improves the website.
 
 # Steps to Install
 1. Click on Releases
