@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Vortex Settings</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         body {
-            width: 280px;
+            width: 250px;
             margin: 0;
             padding: 20px;
             font-family: 'Inter', sans-serif;
@@ -14,7 +13,6 @@
             color: white;
             border-radius: 12px;
         }
-
         h2 {
             margin: 0 0 20px 0;
             font-size: 1.2rem;
@@ -25,228 +23,67 @@
             background-clip: text;
             color: transparent;
         }
-
-        .section {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .section:last-of-type {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .section-title {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #6366f1;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .btn-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
         .btn {
-            flex: 1;
+            display: block;
+            width: 100%;
             padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.1);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 8px;
             cursor: pointer;
             font-family: inherit;
             font-weight: 600;
             transition: all 0.2s ease;
         }
-
         .btn:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255,255,255,0.2);
         }
-
         .btn.active {
             background: #6366f1;
             border-color: #818cf8;
         }
-
-        .setting-row {
+        .color-picker-wrap {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #e2e8f0;
-        }
-
-        .setting-col {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #e2e8f0;
-        }
-
-        .setting-col span {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .val-display {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem;
+            font-weight: 600;
             color: #a1a1aa;
-            font-size: 0.8rem;
         }
-
         input[type="color"] {
             -webkit-appearance: none;
             border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
             cursor: pointer;
             background: transparent;
         }
-
         input[type="color"]::-webkit-color-swatch-wrapper {
             padding: 0;
         }
-
         input[type="color"]::-webkit-color-swatch {
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-        }
-
-        input[type="range"] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            outline: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #10b981;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        input[type="range"]::-webkit-slider-thumb:hover {
-            background: #34d399;
-        }
-
-        .toggle {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 22px;
-        }
-
-        .toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: .3s;
-            border-radius: 22px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: .3s;
-            border-radius: 50%;
-        }
-
-        input:checked+.slider {
-            background-color: #6366f1;
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(18px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
         }
     </style>
 </head>
-
 <body>
     <h2>Vortex Re-UI</h2>
-
-    <div class="section">
-        <div class="section-title">Theme</div>
-        <div class="btn-row">
-            <button class="btn" id="btn-dark">Dark</button>
-            <button class="btn" id="btn-light">Light</button>
-        </div>
-        <div class="setting-row">
-            <span>Custom Accent</span>
-            <input type="color" id="custom-color">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Layout & Display</div>
-        <div class="setting-row">
-            <span>Friends Carousel</span>
-            <label class="toggle">
-                <input type="checkbox" id="toggle-friends" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-        <div class="setting-col">
-            <span>Home-page Game Size <span class="val-display" id="val-grid">140px</span></span>
-            <input type="range" id="range-grid" min="100" max="200" value="140">
-        </div>
-        <div class="setting-col">
-            <span>Text Size <span class="val-display" id="val-text">16px</span></span>
-            <input type="range" id="range-text" min="12" max="20" value="16">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Animations</div>
-        <div class="setting-row">
-            <span>Hover Animations</span>
-            <label class="toggle">
-                <input type="checkbox" id="toggle-hover" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-        <div class="setting-row">
-            <span>Click Animations</span>
-            <label class="toggle">
-                <input type="checkbox" id="toggle-click" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
+    
+    <button class="btn" id="btn-dark">Dark Mode</button>
+    <button class="btn" id="btn-light">Light Mode</button>
+    
+    <div class="color-picker-wrap">
+        <span>Custom Accent</span>
+        <input type="color" id="custom-color">
     </div>
 
     <script src="popup.js"></script>
 </body>
-
 </html>
